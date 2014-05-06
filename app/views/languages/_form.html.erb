@@ -1,0 +1,36 @@
+
+	 <div class="title-box1 v2">
+		<h3>Новый язык</h3>
+	 </div>  
+  	<%= form_for(@language, :html=>{:class=>"contact-form"}) do |f| %>
+  		<div class="success-message">Contact form submitted!</div>	
+			<%= f.label :eng_name do %>
+				<%= f.text_field :eng_name, :type=>"text", :placeholder=>"Название ENG"%>
+			<% end %>
+			<%= f.label :rus_name do %>
+				<%= f.text_field :rus_name, :type=>"text", :placeholder=>"Название RUS"%>
+			<% end %>
+			<%= f.label :orig_name do %>
+				<%= f.text_field :original_name, :type=>"text", :placeholder=>"Название ORIG"%>
+			<% end %>
+			
+			<div class="form_btns title-box1 v2">
+				<h3>Уровни языка</h3>
+	 		</div>  
+			<%= f.label :lang_levels do %>
+				<%= f.fields_for :lang_levels do |d| %>
+	      		<%= render 'lang_level_fields', :f => d %>
+	      	<% end %>
+	      <% end %>
+	      
+      	<div class="form_btns">
+   			<%= link_to_add_association f, :lang_levels do %>
+   				 Добавить уровень
+   				 <i class="fa fa-plus"></i>
+   			<% end %>
+      	</div>
+					
+		   <div class="form_btns">
+	     		<%= f.submit :'Сохранить', :class=>"more_btn" %>
+			</div>
+	<% end %>

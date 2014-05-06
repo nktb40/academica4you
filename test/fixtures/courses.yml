@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  language_id: 1
+  level_id: 1
+  minimum_age: 1
+
+two:
+  name: MyString
+  description: MyText
+  language_id: 1
+  level_id: 1
+  minimum_age: 1

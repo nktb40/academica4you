@@ -1,0 +1,21 @@
+
+	 <div class="title-box1 v2">
+		<h3>Новая компания</h3>
+	 </div>  
+  	<%= form_for(@company, :html=>{:class=>"contact-form"}) do |f| %>
+  		<div class="success-message">Contact form submitted!</div>
+			<%= f.label :class=>"name" do %>
+				<%= f.text_field :name, :type=>"text", :placeholder=>"Название*", :data=>{:constraints=>"@Required @JustLetters"} %>
+				<span class="empty-message">*This field is required.</span>
+				<span class="error-message">*This is not a valid name.</span>	
+			<% end %>
+			<%= f.label :class=>"message" do %>
+				<%= f.text_area :description, :placeholder=>"Описание*", :data=>{:constraints=>"@Required @Length(min=20,max=999999)"} %>
+				<span class="empty-message">*This field is required.</span>
+				<span class="error-message">*The message is too short.</span>
+			<% end %>
+		   <div class="form_btns">
+	     		<!--%= link_to 'Сохранить', '#', :data=>{:type=>'submit'}, :class=>"more_btn" %-->
+	     		<%= f.submit :'Сохранить', :class=>"more_btn" %>
+			</div>
+	<% end %>

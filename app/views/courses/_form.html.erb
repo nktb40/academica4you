@@ -1,0 +1,80 @@
+
+	 <div class="title-box1 v2">
+		<h3>Новый курс</h3>
+	 </div>  
+  	<%= form_for(@course, :html=>{:class=>"contact-form"}) do |f| %>
+  		<div class="success-message">Contact form submitted!</div>
+			<%= f.label :name do %>
+				<%= f.text_field :name, :type=>"text", :placeholder=>"Название курса" %>
+			<% end %>
+			<%= f.label :language_id do %>
+  				<%= f.select :language_id, options_from_collection_for_select(@languages, "id", "rus_name", @course.language_id ) %>
+			<% end %>	
+			
+			<%= f.label :lang_level_id do %>
+					 <%= f.select :level_id, options_from_collection_for_select(@levels, "id", "name", @course.level_id ) %>
+			<% end %>	
+			
+			<%= f.label :minimum_age do %>
+				<%= f.text_field :minimum_age, :type=>"text", :placeholder=>"Минимальный возраст" %>
+			<% end %>
+			
+			<%= f.label :class=>"message" do %>
+				<%= f.text_area :description, :placeholder=>"Описание", :data=>{:constraints=>"@Required @Length(min=20,max=999999)"} %>
+				<span class="empty-message">*This field is required.</span>
+				<span class="error-message">*The message is too short.</span>
+			<% end %>
+			
+			<div class="form_btns title-box1 v2">
+				<h3>Продолжительность курса</h3>
+	 		</div>  
+			<%= f.label :course_durations do %>
+				<%= f.fields_for :course_durations do |d| %>
+	      		<%= render 'course_duration_fields', :f => d %>
+	      	<% end %>
+	      <% end %>
+	      
+      	<div class="form_btns">
+   			<%= link_to_add_association f, :course_durations do %>
+   				 Добавить продолжительность
+   				 <i class="fa fa-plus"></i>
+   			<% end %>
+      	</div>
+      	
+      	<div class="form_btns title-box1 v2">
+				<h3>Школы</h3>
+	 		</div>  
+			<%= f.label :lnk_school_courses do %>
+				<%= f.fields_for :lnk_school_courses do |d| %>
+	      		<%= render 'lnk_school_course_fields', :f => d %>
+	      	<% end %>
+	      <% end %>
+	      
+      	<div class="form_btns">
+   			<%= link_to_add_association f, :lnk_school_courses do %>
+   				 Добавить школу
+   				 <i class="fa fa-plus"></i>
+   			<% end %>
+      	</div>
+	      				
+		   <div class="form_btns">
+	     		<!--%= link_to 'Сохранить', '#', :data=>{:type=>'submit'}, :class=>"more_btn" %-->
+	     		<%= f.submit :'Сохранить', :class=>"more_btn" %>
+			</div>
+	<% end %>
+	
+	<script>
+	jQuery(function($) {
+	  // when the #language field changes
+	  $("#course_language_id").change(function() {
+	    // make a POST call and replace the content
+	    var language = $('select#course_language_id :selected').val();
+	    if(language == "") language="0";
+	    jQuery.get('/courses/update_level_select/' + language, function(data){
+	        $("#course_lang_level_id").html(data);
+	    })
+	    return false;
+	  });
+	
+	})
+	</script>

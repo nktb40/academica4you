@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  currency_1_id: 1
+  currency_2_id: 1
+  rate: 1.5
+  actual_flg: 1
+  deleted_flg: 1
+  valid_from_dttm: 2014-05-02
+  valid_to_dttm: 2014-05-02
+
+two:
+  currency_1_id: 1
+  currency_2_id: 1
+  rate: 1.5
+  actual_flg: 1
+  deleted_flg: 1
+  valid_from_dttm: 2014-05-02
+  valid_to_dttm: 2014-05-02

@@ -1,0 +1,56 @@
+
+	 <div class="title-box1 v2">
+		<h3>Новое проживание</h3>
+	 </div>  
+  	<%= form_for(@residence, :html=>{:class=>"contact-form"}) do |f| %>
+  		<div class="success-message">Contact form submitted!</div>	
+			<%= f.label :name do %>
+				<%= f.text_field :name, :type=>"text", :placeholder=>"Название" %>
+			<% end %>
+			<%= f.label :type do %>
+				<%= f.text_field :type, :type=>"text", :placeholder=>"Тип" %>
+			<% end %>
+			<%= f.label :school_id do %>
+  				<%= f.select :school_id, options_from_collection_for_select(@schools, "id", "name", @residence.school_id ) %>
+			<% end %>	
+			
+			<%= f.label :description do %>
+				<%= f.text_area :description, :placeholder=>"Описание" %>
+			<% end %>
+			
+			<div class="form_btns title-box1 v2">
+				<h3>Продолжительность проживания</h3>
+	 		</div>  
+			<%= f.label :residence_durations do %>
+				<%= f.fields_for :residence_durations do |d| %>
+	      		<%= render 'residence_duration_fields', :f => d %>
+	      	<% end %>
+	      <% end %>
+	      
+      	<div class="form_btns">
+   			<%= link_to_add_association f, :residence_durations do %>
+   				 Добавить продолжительность
+   				 <i class="fa fa-plus"></i>
+   			<% end %>
+      	</div>
+      	
+      	<div class="form_btns title-box1 v2">
+				<h3>Дополнительные опции проживания</h3>
+	 		</div>  
+			<%= f.label :residence_features do %>
+				<%= f.fields_for :residence_features do |d| %>
+	      		<%= render 'residence_feature_fields', :f => d %>
+	      	<% end %>
+	      <% end %>
+	      
+      	<div class="form_btns">
+   			<%= link_to_add_association f, :residence_features do %>
+   				 Добавить продолжительность
+   				 <i class="fa fa-plus"></i>
+   			<% end %>
+      	</div>
+					
+		   <div class="form_btns">
+	     		<%= f.submit :'Сохранить', :class=>"more_btn" %>
+			</div>
+	<% end %>

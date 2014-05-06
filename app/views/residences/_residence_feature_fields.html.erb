@@ -1,0 +1,18 @@
+<div class="nested-fields row marBot2">
+	<div class="grid_3">
+	<%= f.label :name, :class=>"field" do %>
+		<%= f.text_field :name, :type=>"text", :placeholder=>"Название" %>
+	<% end %>
+	<%= f.label :price, :class=>"field" do %>
+		<%= f.text_field :price, :type=>"text", :placeholder=>"Стоимость" %>
+	<% end %>
+	<%= f.label :description, :class=>"field" do %>
+		<%= f.text_area :description, :placeholder=>"Описание" %>
+	<% end %>
+	</div>
+	<div class="grid_3">
+		<div class="form_btns marTop0">
+		  <%= link_to_remove_association "Удалить", f %>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,8 @@
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: academica4you_production
+  pool: 5
+  host: localhost
+  username: academica4you
+  password: 

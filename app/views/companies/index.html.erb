@@ -1,0 +1,54 @@
+<div class="menu_holder content_page">
+	<div class="container">
+		<div class="row">
+			<div class="grid_12">
+				<nav>
+					<ul class="sf-menu header_menu sf-js-enabled">
+						<li class="current" id="first-li"><%= link_to companies_path do %>Компании<strong></strong><% end %></a></li>
+						<li><%= link_to schools_path do %>Школы<strong></strong><% end %></li>
+						<li><%= link_to courses_path do %> Курсы<strong></strong><% end %></li>
+						<li><%= link_to residences_path do %> Проживание<strong></strong><% end %></li>
+						<li id="last-li"><a href="#">Прочее<strong></strong></a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+ 	<div class="row">
+		<div class="grid_2">
+			<%= link_to "Добавить", new_company_path, :class=>"more_btn", :remote=>true %>
+		</div> 	
+ 	</div>
+	<div id="new_company_form" class="grid_8 hline3 marg-left-0"></div>
+ 	<div class="wrapper hline2">
+			<div class="title-box1 v2">
+				<h3>Компании</h3>
+			</div>
+			<div class="title-box2">
+				<span class="mar3">ID</span>
+				<span class="mar3">Название</span>
+				<span>Описание</span>
+			</div>		
+			<ul class="listWithMarker">			
+				<% @companies.each do |company| %>
+					<li>
+						<div class="grid_1">
+							<span class="rank_num"><%= company.id %></span>					
+						</div>
+						<div class="grid_2"><%= company.name %></div>
+						<div class="grid_6"><%= company.description %></div>
+						<div class="grid_2">
+							<%= link_to edit_company_path(company), :remote=>true do %> 
+								<i class="fa fa-edit"></i>
+						 	<% end %>
+						 	<%= link_to company_path(company), :method => 'delete', data: { confirm: 'Удалить компанию "'+company.name+'"?' } do %> 
+								<i class="fa fa-trash-o"></i>
+						 	<% end %>		
+						</div>
+					</li>	
+				<% end %>
+			</ul>
+ 	</div>
+</div>

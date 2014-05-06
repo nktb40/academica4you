@@ -1,0 +1,12 @@
+<div class="nested-fields row marBot2">
+	<div class="grid_3">
+	<%= f.label :school_id do %>
+  		<%= f.select :school_id, options_from_collection_for_select(@schools, "id", "name", f.object.school_id) %>
+	<% end %>
+	</div>
+	<div class="grid_3">
+		<div class="form_btns marTop0">
+		  <%= link_to_remove_association "Удалить школу", f %>
+		</div>
+	</div>
+</div>

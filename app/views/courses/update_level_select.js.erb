@@ -1,0 +1,5 @@
+$('#course_level_id').empty();
+
+<% @levels.each do |level| %>
+	 $("#course_level_id").append('<option value='+'<%= level.id %>'+'>'+'<%= level.name %>'+'</option>');
+<% end %>

@@ -1,0 +1,15 @@
+<div class="nested-fields row marBot2">
+	<div class="grid_3">
+	<%= f.label :name, :class=>"field" do %>
+		<%= f.text_field :name, :type=>"text", :placeholder=>"Название уровня" %>
+	<% end %>
+	<%= f.label :descritpion, :class=>"field" do %>
+		<%= f.text_area :description, :type=>"text", :placeholder=>"Описание уровня" %>
+	<% end %>
+	</div>
+	<div class="grid_3">
+		<div class="form_btns marTop0">
+		  <%= link_to_remove_association "Удалить уровень", f %>
+		</div>
+	</div>
+</div>

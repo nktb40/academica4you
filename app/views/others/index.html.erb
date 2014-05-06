@@ -1,0 +1,54 @@
+<div class="menu_holder content_page">
+	<div class="container">
+		<div class="row">
+			<div class="grid_12">
+				<nav>
+					<ul class="sf-menu header_menu sf-js-enabled">
+						<li id="first-li"><%= link_to companies_path do %>Компании<strong></strong><% end %></a></li>
+						<li><%= link_to schools_path do %>Школы<strong></strong><% end %></li>
+						<li><%= link_to courses_path do %> Курсы<strong></strong><% end %></li>
+						<li><%= link_to residences_path do %> Проживание<strong></strong><% end %></li>
+						<li id="last-li" class="current"><%= link_to others_path do %> Прочее<strong></strong><% end %></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+ 	<div class="row">
+		<div class="grid_2">
+			<%= link_to "Добавить", new_language_path, :class=>"more_btn", :remote=>true %>
+		</div> 	
+ 	</div>
+	<div id="new_language_form" class="grid_8 hline3 marg-left-0"></div>
+ 	<div class="wrapper hline2">
+			<div class="title-box1 v2">
+				<h3>Языки</h3>
+			</div>
+			<div class="title-box2">
+				<span class="mar3">ID</span>
+				<span class="mar3">Название ENG</span>
+				<span>Название RUS</span>
+			</div>		
+			<ul class="listWithMarker">			
+				<% @languages.each do |lang| %>
+					<li>
+						<div class="grid_1">
+							<span class="rank_num"><%= lang.id %></span>					
+						</div>
+						<div class="grid_2"><%= lang.eng_name %></div>
+						<div class="grid_6"><%= lang.rus_name %></div>
+						<div class="grid_2">
+							<%= link_to edit_language_path(lang), :remote=>true do %> 
+								<i class="fa fa-edit"></i>
+						 	<% end %>
+						 	<%= link_to language_path(lang), :method => 'delete', data: { confirm: 'Удалить язык "'+lang.rus_name+'"?' } do %> 
+								<i class="fa fa-trash-o"></i>
+						 	<% end %>		
+						</div>
+					</li>	
+				<% end %>
+			</ul>
+ 	</div>
+</div>
