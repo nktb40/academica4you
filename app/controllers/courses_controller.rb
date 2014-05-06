@@ -6,7 +6,7 @@ class CoursesController < ApplicationController
 	def new
 		@course = Course.new
 		@languages = Language.all
-		@levels = []
+		@levels = LangLevel.where(:language_id=>@languages.first.id)
 		@schools = School.all
 	end 
 	
