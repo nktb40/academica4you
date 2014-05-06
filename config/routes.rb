@@ -3,7 +3,7 @@ Academica4you::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'schools#index'
+   root 'companies#index'
    
    resources :schools , only: [:index, :new, :create, :edit, :update, :destroy]
    get 'search' => 'schools#search'
