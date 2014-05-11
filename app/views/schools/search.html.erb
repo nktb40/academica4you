@@ -1,238 +1,182 @@
-<!--==============================header=================================-->
 
-				<header>
-					<div class="container">
-						<div class="row">
-							<div class="grid_12">
-									<h1>
-									<%= link_to image_tag("logo.png", :alt=>"Omovi") %>
-									</h1>
-
-									<form id="search1" action="search.php" method="GET" accept-charset="utf-8">
-										<input type="text" name="s" value="" onfocus="myFocus(this);" onblur="myBlur(this);">
-										<a onclick="document.getElementById('search1').submit()" class="more_btn3"></a>
-									</form>
-									
-								</div>
-						</div>
+ <div class="row"> 
+ 	<div class="col-lg-8">
+		<div class="panel panel-default">
+	       <div class="panel-heading"><h3 class="panel-title">Поиск на карте</h3></div>
+	       <div class="panel-body pad-0" id="map_canvas" style="height:412px;">
+	       </div>
+	     </div>
+ 	</div>
+	<div class="col-lg-4">
+		<div class="panel panel-default">
+	       <div class="panel-heading">Выбор программы</div>
+	       <div class="panel-body">
+	       	<%= select_tag :language_id, 
+	       	options_for_select([ "Курсы английского", "Подготовка к экзаменам","Учебный семестр/год", "Учеба/работа" ], "Курсы английского"), 
+	       	:class=>"selectpicker", :data=>{:style=>"btn-info"} %>
+	       </div>
+	     </div>
+		<div class="panel panel-default">
+	       <div class="panel-heading">Выбор стран</div>
+	       <div class="panel-body">
+	       	<div class="col-lg-6">
+		         <div class="checkbox">
+		         	<label><input type="checkbox"> Австралия</label>
+		         </div>
+		         <div class="checkbox">
+		            <label><input type="checkbox"> Америка</label>
+		         </div>
+		         <div class="checkbox">
+		            <label><input type="checkbox"> Великобритания</label>
+		         </div>
+		         <div class="checkbox">
+		            <label><input type="checkbox"> Германия</label>
+		        	</div>
+		      </div>
+		      <div class="col-lg-6">
+		        	<div class="checkbox">
+		            <label><input type="checkbox"> Мальта</label>
+		         </div>
+		         <div class="checkbox">
+		            <label><input type="checkbox"> Новая зеландия</label>
+		         </div>
+		         <div class="checkbox">
+		            <label><input type="checkbox"> Франция</label>
+		         </div>
+					<div class="checkbox">
+		            <label><input type="checkbox"> ЮАР</label>
+		         </div>
+		      </div>
+	       </div>
+	     </div>
+	     
+	     <div class="panel panel-default">
+	       <div class="panel-heading">Предполагаемое время поездки</div>
+	       <div class="panel-body">
+	       <div class="col-lg-6">
+	       	<div class="input-group" id='datetimepicker1'>	      
+			      <input type="text" class="form-control date pad-0">
+			      <span class="input-group-btn">
+                	<button class="btn btn-info" type="button">
+							<span class="glyphicon glyphicon-calendar"></span>                	
+                	</button>
+              	</span>
+			   </div>
+			  </div>
+			  <div class="col-lg-6">
+			   <div class="input-group" id='datetimepicker2'>	      
+			      <input type="text" class="form-control date pad-0">
+			      <span class="input-group-btn">
+                	<button class="btn btn-info" type="button">
+							<span class="glyphicon glyphicon-calendar"></span>                	
+                	</button>
+              	</span>
+			   </div>
+			  </div>
+	       </div>
+	     </div>
+	     
+ 	</div> 
+ </div>
+ <div class="row">
+ 	<div class="col-lg-12">
+	 	<div class="panel panel-default">
+	       <div class="panel-heading">
+	         <h3 class="panel-title">Результаты поиска</h3>
+	       </div>
+	   </div>
+   
+ 	   <div class="panel panel-default">
+ 	  		<div class="panel-body course-item">
+    			<div class="col-lg-2 pad-left-0">
+    				<div style="width:100%; margin-bottom: 15px;">
+    					<div class="comp-logo">
+    						<%= image_tag('eflogo.png', :class=>"row-h-30") %>
+						</div>    				
+    				</div>
+    				<%= image_tag('00.jpg', :style=>"width: 100%;") %>
+    			</div>
+    			<div class="col-lg-8">
+    				<div class="well course-item-well ">
+    					<h4>Подготовка к TOEFL</h4>
+    					<p>Язык: Английский</p>
+    					<p>Продолжительность: от 2 до 12 недель</p>
+    					<p>Минимальный уровень языка: Intermediate</p>
+    				</div>
+    				<div class="well course-item-well mar-bot-0">
+    					<p>Страны: Америка, Мальта</p>
+    				</div>
+    			</div>
+				<div class="col-lg-2 pad-right-0">
+					<div class="well course-item-well">
+						<h4>от $230</h4>
 					</div>
-				</header>
-
-
-			<div id="stuck_container">
-				<div class="menu_holder">
-					<div class="container">
-						<div class="row">
-							<div class="grid_12">
-								<nav>
-									<ul class="sf-menu header_menu sf-js-enabled">
-										<li class="current" id="first-li"><a href="index.html">New Releases<strong></strong></a></li>
-										<li><a href="index-1.html">Most Popular<strong></strong></a></li>
-										<li class=""><a href="index-2.html" class="sf-with-ul"><span></span>Genres<strong></strong><span class="sf-sub-indicator"></span></a>
-												<ul class="submenu" style="visibility: hidden; display: none;">
-													<li><a href="#">Dolore ipsu</a></li>
-													<li class="sub-menu"><a href="#" class="sf-with-ul">Consecte<span class="sf-sub-indicator"></span></a>
-														 <ul class="submenu2" style="display: none; visibility: hidden;">
-																<li><a href="#">Dolore ipsu</a></li>
-																<li><a href="#">Consecte</a></li>
-																<li><a href="#">Elit Conseq</a></li>
-														 </ul>
-													</li>
-													<li><a href="#">Elit Conseq</a></li>
-												</ul>
-										 </li>
-										 <li><a href="index-3.html">Blog<strong></strong></a></li>
-										 <li id="last-li"><a href="index-4.html">Contacts<strong></strong></a></li>
-									</ul>
-								</nav>
-							</div>
-						</div>
+					<button type="submit" class="btn btn-success btn-block">Подробнее</button>
+					<button type="submit" class="btn btn-info btn-block">Заказать</button>
+    			</div>
+  			</div>
+ 	  </div>  
+ 	  
+ 	  <div class="panel panel-default">
+ 	  		<div class="panel-body course-item">
+    			<div class="col-lg-2 pad-left-0">
+    				<div style="width:100%; margin-bottom: 15px;">
+    					<div class="comp-logo">
+    						<%= image_tag('eflogo.png', :class=>"row-h-30") %>
+						</div>    				
+    				</div>
+    				<%= image_tag('00.jpg', :style=>"width: 100%;") %>
+    			</div>
+    			<div class="col-lg-8">
+    				<div class="well course-item-well ">
+    					<h4>Подготовка к TOEFL</h4>
+    					<p>Язык: Английский</p>
+    					<p>Продолжительность: от 2 до 12 недель</p>
+    					<p>Минимальный уровень языка: Intermediate</p>
+    				</div>
+    				<div class="well course-item-well mar-bot-0">
+    					<p>Страны: Америка, Мальта</p>
+    				</div>
+    			</div>
+				<div class="col-lg-2 pad-right-0">
+					<div class="well course-item-well">
+						<h4>от $230</h4>
 					</div>
-				</div>
-			</div>
-
-<!--=======content================================-->
-
-<div class="container">
-	<div class="header-box">
-
-		<div id="owl" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
-			<div class="owl-wrapper-outer"><div class="owl-wrapper" style="width: 6360px; left: 0px; display: block;"><div class="owl-item" style="width: 1060px;"><div class="item">
-				<p class="txt1">Watch your favorite movie online</p>
-			</div></div><div class="owl-item" style="width: 1060px;"><div class="item">
-				<p class="txt1">The best online source of movies</p>
-			</div></div><div class="owl-item" style="width: 1060px;"><div class="item">
-				<p class="txt1">Don't be bored! Entertain yourself!</p>
-			</div></div></div></div>
-
-		<div class="owl-controls clickable"><div class="owl-pagination"><div class="owl-page active"><span class=""></span></div><div class="owl-page"><span class=""></span></div><div class="owl-page"><span class=""></span></div></div></div></div>
-
-	</div>
-</div>
-
-<div class="container">
-
-	<div class="wrapper">
-		<div class="row">
-
-			<div class="grid_8">
-				<div class="title-box1">
-					<a href="#" class="marRight1">New Releases</a>
-					<a href="#" class="marRight1">Most Popular</a>
-					<a href="#" class="marRight1">Top Rated</a>
-					<a href="#">By Genre</a>
-				</div>
-				
-				<div class="wrapper hline3">
-					 	<div id="map_canvas" style="height:400px;">
-					 	</div>
-				</div>
-
-				<div class="wrapper marTop1">
-					<div class="row">
-						<div class="grid_2 kaplan_back_logo">
-							<div class="kaplan_logo">
-							</div>
-						</div>
-						<div class="grid_4">
-							<p class="txt6"><a href="#">Donec facilisi ulet</a></p>
-							<p class="txt7">Lorem Ipsum dolore</p>
-							<p>Morbi tempor quam massadipu iscing ut curs congue pentesqu nisel elit comte. </p>
-						</div>
-						<div class="grid_2">
-							<div class="box">
-								<%= image_tag ("star_4.png"), :class=>"img3 no_resize" %>
-								<a href="#" class="more_btn">Подробнее</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-
-
-
-			</div>
-
-			<div class="grid_4">
-				<div class="title-box1 v2">
-					<h3>GENRES</h3>
-				</div>
-				<ul class="listWithMarker">
-					<li>
-						<div class="list_inside inside_1"><a href="#">Action</a></div>
-						<div class="list_inside inside_2"><a href="#">Movies</a></div>
-					</li>
-					<li>
-						<div class="list_inside inside_1"><a href="#">Adventure</a></div>
-						<div class="list_inside inside_2"><a href="#">Musical</a></div>
-					</li>
-					<li>
-						<div class="list_inside inside_1"><a href="#">Animation</a></div>
-						<div class="list_inside inside_2"><a href="#">Mystery</a></div>
-					</li>
-					<li>
-						<div class="list_inside inside_1"><a href="#">Biography</a></div>
-						<div class="list_inside inside_2"><a href="#">Reality-TV</a></div>
-					</li>
-					<li>
-						<div class="list_inside inside_1"><a href="#">Comedy</a></div>
-						<div class="list_inside inside_2"><a href="#">News</a></div>
-					</li>
-					<li>
-						<div class="list_inside inside_1"><a href="#">Crime</a></div>
-						<div class="list_inside inside_2"><a href="#">Romance</a></div>
-					</li>
-					<li>
-						<div class="list_inside inside_1"><a href="#">Documentary</a></div>
-						<div class="list_inside inside_2"><a href="#">Sci-Fi</a></div>
-					</li>
-					<li>
-						<div class="list_inside inside_1"><a href="#">Drama</a></div>
-						<div class="list_inside inside_2"><a href="#">Sport</a></div>
-					</li>
-					<li>
-						<div class="list_inside inside_1"><a href="#">Family</a></div>
-						<div class="list_inside inside_2"><a href="#">Talk-Show</a></div>
-					</li>
-					<li>
-						<div class="list_inside inside_1"><a href="#">Featured</a></div>
-						<div class="list_inside inside_2"><a href="#">Thriller</a></div>
-					</li>
-					<li>
-						<div class="list_inside inside_1"><a href="#">Film-Noir</a></div>
-						<div class="list_inside inside_2"><a href="#">War</a></div>
-					</li>
-					<li>
-						<div class="list_inside inside_1"><a href="#">Horror</a></div>
-						<div class="list_inside inside_2"><a href="#">Western</a></div>
-					</li>
-				</ul>
-
-
-				<div class="title-box1 v3">
-					<h3>Latest Movie News</h3>
-				</div>
-
-				<div class="wrapper marTop1">
-					<div class="date_section">
-						<span class="day">10</span>
-						<span class="month">feb</span>
-					</div>
-					<div class="box2">
-						<p class="txt6"><a href="#">Donec facilisi ulet</a></p>
-						<p class="txt7">Lorem Ipsum dolore</p>
-						<p>Morbi tempor quam massadipu iscing ut curs congue pentesqu nisel elit comte. </p>
-					</div>
-				</div>
-
-				<div class="wrapper marTop2">
-					<div class="date_section">
-						<span class="day">12</span>
-						<span class="month">feb</span>
-					</div>
-					<div class="box2">
-						<p class="txt6"><a href="#">Donec facilisi ulet</a></p>
-						<p class="txt7">Lorem Ipsum dolore</p>
-						<p>Morbi tempor quam massadipu iscing ut curs congue pentesqu nisel elit comte. </p>
-					</div>
-				</div>
-
-				<div class="wrapper marTop2">
-					<div class="date_section">
-						<span class="day">14</span>
-						<span class="month">feb</span>
-					</div>
-					<div class="box2">
-						<p class="txt6"><a href="#">Donec facilisi ulet</a></p>
-						<p class="txt7">Lorem Ipsum dolore</p>
-						<p>Morbi tempor quam massadipu iscing ut curs congue pentesqu nisel elit comte. </p>
-					</div>
-				</div>
-
-				<div class="wrapper marTop2">
-					<div class="date_section">
-						<span class="day">16</span>
-						<span class="month">feb</span>
-					</div>
-					<div class="box2">
-						<p class="txt6"><a href="#">Donec facilisi ulet</a></p>
-						<p class="txt7">Lorem Ipsum dolore</p>
-						<p>Morbi tempor quam massadipu iscing ut curs congue pentesqu nisel elit comte. </p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
- <script type="text/javascript"
+					<button type="submit" class="btn btn-success btn-block">Подробнее</button>
+					<button type="submit" class="btn btn-info btn-block">Заказать</button>
+    			</div>
+  			</div>
+ 	  </div>  
+ 	  
+ 	</div>
+ </div>
+ 
+ <script type="text/javascript" >
+		$('.selectpicker').selectpicker();
+ </script>
+ <script type="text/javascript">
+      $( document ).ready(function() {
+           $('#datetimepicker1').datetimepicker({
+                    language: 'ru',
+                    pickTime: false,
+                    useCurrent: true
+           });
+           $('#datetimepicker2').datetimepicker({
+                    language: 'ru',
+                    pickTime: false,
+                    useCurrent: true
+           });
+      });
+  </script>
+ 
+  <script type="text/javascript"
       src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAYVxHwPxj8iSGj3rqD2sWEEUcCF2mSxI4&sensor=true">
     </script>
     <script type="text/javascript">
       function initialize() {
         var mapOptions = {
-          center: new google.maps.LatLng(-34.397, 150.644),
-          zoom: 8,
+          center: new google.maps.LatLng(0.1768697,37.9083264),
+          zoom: 2,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         var map = new google.maps.Map(document.getElementById("map_canvas"),
@@ -240,38 +184,3 @@
       }
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>
-    
- <!--=======footer=================================-->
-	<footer>
-		<div class="footer_priv">
-
-			<div class="container">
-				<div class="row">
-					<div class="grid_3">
-						<h1>
-							<%= link_to image_tag("logo_footer.png", :alt=>"Omovi") %></h1>
-					</div>
-
-					<div class="grid_6">
-						<ul class="list_footer">
-							<li class="current"><a href="index.html">New releases</a></li>
-							<li><a href="index-1.html">Most popular</a></li>
-							<li><a href="index-2.html">Genres</a></li>
-							<li><a href="index-3.html">Blog</a></li>
-							<li><a href="index-4.html">Contacts</a></li>
-						</ul>
-					</div>
-
-					<div class="grid_3">
-						<p class="txt_priv"><span class="fw600 color1">OMOVI  </span> © <span id="copyright-year">2014</span> | <a href="index-5.html" class="link1">Privacy Policy</a><br><!--{%FOOTER_LINK} --></p>
-						<ul class="soc_icons">
-							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#"><i class="fa fa-rss"></i></a></li>
-							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-						</ul>
-					</div>
-				</div>
-				</div>
-			</div>
-	</footer>

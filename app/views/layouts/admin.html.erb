@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Academica4you</title>
+  <%= favicon_link_tag(source='favicon.png', :rel=>"shortcut icon", :type=>"image/x-icon") %>
+  <%= favicon_link_tag(source='favicon.png', :rel=>"icon", :type=>"image/x-icon") %>
+  <meta name="description" content=""/>
+  
+  <meta name="keywords" content=""/>
+  <meta name="document-state" content="Dynamic" />
+  <meta name="robots" content="all" />
+  <meta http-equiv="content-language" content="ru" />
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div id="back-top" style="display: block; opacity: 1;"><i class="fa fa-arrow-up"></i></div>    
+<div class="main">
+	<div class="div-content">  
+
+<%= yield %>
+
+</body>
+</html>
