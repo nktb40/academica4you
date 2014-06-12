@@ -10,7 +10,7 @@ Academica4you::Application.routes.draw do
    
    resources :companies, only: [:index, :new, :create, :edit, :update, :destroy]
    
-   resources :courses, only: [:index, :new, :create, :edit, :update, :destroy]
+   resources :courses, only: [:index, :new, :show, :create, :edit, :update, :destroy]
    
    resources :others, only: [:index]
    
