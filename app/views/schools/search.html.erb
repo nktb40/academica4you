@@ -11,9 +11,16 @@
 		<div class="panel panel-default">
 	       <div class="panel-heading">Выбор программы</div>
 	       <div class="panel-body">
-	       	<%= select_tag :language_id, 
-	       	options_for_select([ "Курсы английского", "Подготовка к экзаменам","Учебный семестр/год", "Учеба/работа" ], "Курсы английского"), 
-	       	:class=>"selectpicker", :data=>{:style=>"btn-info"} %>
+	       	<div class="col-lg-8">
+	       		<%= select_tag :language_id, 
+	       		options_for_select([ "Курсы английского", "Подготовка к экзаменам","Учебный семестр/год", "Учеба/работа" ], "Курсы английского"), 
+	       		:class=>"selectpicker", :data=>{:style=>"btn-info"} %>
+	       	</div>
+	       	<div class="col-lg-4">
+	       		<%= link_to "", :class=>"btn btn-success" do %>
+	       			Поиск
+	       		<% end %>
+	       	</div>
 	       </div>
 	     </div>
 		<div class="panel panel-default">
