@@ -1,0 +1,93 @@
+<div class="row">
+	<div class="col-lg-9">
+		<div class="panel panel-default">
+			<div class="panel-heading"><h3 class="panel-title">Корзина заказов</h3></div>
+			<div class="panel-body">
+				 <table class="table table-hover">
+	           <thead>
+			        <tr>
+			        	 <th></th>
+			          <th>Курс</th>
+			          <th>Тип</th>
+			          <th>Кол-во недель</th>
+			          <th>Стоимость</th>
+			        </tr>
+			     </thead>
+		        <tbody>
+		          <tr>
+		          	<td><span class="glyphicon glyphicon-remove remove-btn"></span> </td>
+		          	<td>Курс</td>
+		            <td><%= link_to "Стандартные групповые курсы английского | EF Malta", "" %></td>
+		            <td>
+		            	<%= select_tag :language_id, 
+	       					options_for_select([ "1 неделя", "2 недели","3 недели", "4 недели" ], "1 неделя"), 
+	       					:class=>"selectpicker", :data=>{:style=>"btn-info btn-sm"} %>
+		            </td>
+		            <td>€100</td>
+		          </tr>
+		          <tr>
+		          	<td><span class="glyphicon glyphicon-remove remove-btn"></span> </td>
+		          	<td>Курс</td>
+		            <td><%= link_to "Стандартные групповые курсы английского | EF Malta", "" %></td>
+		            <td>
+		            	<%= select_tag :language_id, 
+	       					options_for_select([ "1 неделя", "2 недели","3 недели", "4 недели" ], "1 неделя"), 
+	       					:class=>"selectpicker", :data=>{:style=>"btn-info btn-sm"} %>
+		            </td>
+		            <td>€100</td>
+		          </tr>
+		          <tr>
+		          	<td><span class="glyphicon glyphicon-remove remove-btn"></span> </td>
+		            <td>Курс</td>		          	
+		            <td><%= link_to "Стандартные групповые курсы английского | EF Malta", "" %></td>
+		            <td>
+		            	<%= select_tag :language_id, 
+	       					options_for_select([ "1 неделя", "2 недели","3 недели", "4 недели" ], "1 неделя"), 
+	       					:class=>"selectpicker", :data=>{:style=>"btn-info btn-sm"} %>
+		            </td>
+		            <td>€100</td>
+		          </tr>
+		          <tr>		          
+		            <td><span class="glyphicon glyphicon-remove remove-btn"></span> </td>
+		            <td>Проживание</td>
+		            <td>Magenta House | Проживание в резиденции в комнате на одного. Без еды</td>
+		            <td>
+		            	<%= select_tag :language_id, 
+	       					options_for_select([ "1 неделя", "2 недели","3 недели", "4 недели" ], "1 неделя"), 
+	       					:class=>"selectpicker", :data=>{:style=>"btn-info btn-sm"} %>
+		            </td>
+		            <td>€100</td>
+		          </tr>
+		          <tr>		          
+		          	<td><span class="glyphicon glyphicon-remove remove-btn"></span> </td>
+		          	<td>Проживание</td>
+		            <td>Проживание в семье | Комната на двоих. 3-4 питание 14 раз в неделю</td>
+		            <td>
+		            	<%= select_tag :language_id, 
+	       					options_for_select([ "1 неделя", "2 недели","3 недели", "4 недели" ], "1 неделя"), 
+	       					:class=>"selectpicker", :data=>{:style=>"btn-info btn-sm"} %>
+		            </td>
+		            <td>€100</td>
+		          </tr>
+		        </tbody>
+			    </table>
+			    <div class="row">
+			    	<div class="col-lg-3 pull-right">
+			    		<h4 class="text-underline text-right">Итого: €500</h4>
+			    	</div>
+			    </div>
+			    <div class="row">
+			    	<div class="col-lg-3 pull-right">
+			    		<%= link_to "Оформить заказ", "", :class=>"btn btn-success pull-right" %>
+			    	</div>
+			    </div>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-3">
+		<div class="well"></div>
+	</div>
+</div>
+ <script type="text/javascript" >
+		$('.selectpicker').selectpicker();
+ </script>

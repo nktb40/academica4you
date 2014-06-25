@@ -19,6 +19,8 @@ Academica4you::Application.routes.draw do
    get 'courses/update_level_select/:id', :controller=>'courses', :action => 'update_level_select'
    
    resources :residences, only: [:index, :new, :create, :edit, :update, :destroy]
+   
+   resources :carts, only: [:index]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
