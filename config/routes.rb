@@ -21,6 +21,8 @@ Academica4you::Application.routes.draw do
    resources :residences, only: [:index, :new, :create, :edit, :update, :destroy]
    
    resources :carts, only: [:index]
+   
+   resources :orders, only: [:new]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,0 +1,25 @@
+<div class="container">
+	<div class="row">
+		<div class="col-lg-9">
+			<div class="panel panel-default">
+				<div class="panel-heading"><h3 class="panel-title">Оформление заказа</h3></div>
+				<div class="panel-body">
+					<div class="col-lg-6">
+						<%= render :partial=>'orders/form' %>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3">
+			<%= link_to "", :class=>"btn btn-success btn-lg btn-block" do %>
+				<span class="glyphicon glyphicon-shopping-cart"></span>			
+	       	Корзина
+	 			<sup><span class="badge">2</span></sup>      	
+	       <% end %> 
+	       <%= link_to "", :class=>"btn btn-warning btn-lg btn-block" do %>
+				<span class="glyphicon glyphicon-comment"></span>
+	       	Связаться с нами						
+	       <% end %> 
+		</div>
+	</div>
+</div>

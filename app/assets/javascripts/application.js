@@ -19,3 +19,4 @@
 //= require bootstrap-datetimepicker-ru
 //= require bootstrap-datetimepicker
 //= require turbolinks
+//= require backstretch

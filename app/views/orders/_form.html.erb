@@ -1,0 +1,23 @@
+<%= form_for("", :remote=>true) do |f| %>
+<fieldset>
+		<div class="form-group">
+			<%= f.label :'Ваше имя*' %>
+			<span id='name_error' class='error' style ='color: red;'></span>
+			<%= f.text_field :name, :type=>"text", :class=>"form-control", :placeholder=>"Введите Ваше имя" %>	
+		</div>
+		<div class="form-group">
+	   	<%= f.label :'Телефон*' %>
+	   	<span id='phone_error' class='error' style ='color: red;'></span>
+	   	<%= f.text_field :phone, :type=>"text", :class=>"form-control", :placeholder=>"Номер телефона"  %>
+	   </div>
+ 		<div class="form-group">
+ 			<%= f.label :'E-mail*' %>
+ 			<span id='email_error' class='error' style ='color: red;'></span>
+	   	<%= f.text_field :email, :type=>"text", :class=>"form-control", :placeholder=>"Email" %>
+	   </div>
+	   <div class="form-group last">
+     		<%= f.submit :'Отправить', :class=>"btn btn-success", :id=>"order_submit" %>
+		</div>
+</fieldset>
+<% end %>
+
