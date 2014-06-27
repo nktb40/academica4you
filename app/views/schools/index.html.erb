@@ -1,54 +1,134 @@
-<div class="menu_holder content_page">
-	<div class="container">
-		<div class="row">
-			<div class="grid_12">
-				<nav>
-					<ul class="sf-menu header_menu sf-js-enabled">
-						<li id="first-li"><%= link_to companies_path do %>Компании<strong></strong><% end %></a></li>
-						<li class="current"><%= link_to schools_path do %>Школы<strong></strong><% end %></li>
-						<li><%= link_to courses_path do %> Курсы<strong></strong><% end %></li>
-						<li><%= link_to residences_path do %> Проживание<strong></strong><% end %></li>
-						<li id="last-li"><%= link_to others_path do %> Прочее<strong></strong><% end %></li>
-					</ul>
-				</nav>
-			</div>
-		</div>
-	</div>
-</div>
-<div class="container">
- 	<div class="row">
-		<div class="grid_2">
-			<%= link_to "Добавить", new_school_path, :class=>"more_btn", :remote=>true %>
-		</div> 	
- 	</div>
-	<div id="new_school_form" class="grid_8 hline3 marg-left-0"></div>
- 	<div class="wrapper hline2">
-			<div class="title-box1 v2">
-				<h3>Школы</h3>
-			</div>
-			<div class="title-box2">
-				<span class="mar3">ID</span>
-				<span class="mar3">Название</span>
-				<span>Описание</span>
+<div class="container pad-top-bot-50">
+	<div class="row">
+		<div class="col-lg-2">
+			<div class="panel panel-default">
+				<div class="panel-heading">Параметры</div>
+				<div class="panel-body">
+				</div>
 			</div>		
-			<ul class="listWithMarker">			
-				<% @schools.each do |school| %>
-					<li>
-						<div class="grid_1">
-							<span class="rank_num"><%= school.id %></span>					
-						</div>
-						<div class="grid_2"><%= school.name %></div>
-						<div class="grid_6"><%= school.description %></div>
-						<div class="grid_2">
-							<%= link_to edit_school_path(school), :remote=>true do %> 
-								<i class="fa fa-edit"></i>
-						 	<% end %>
-						 	<%= link_to school_path(school), :method => 'delete', data: { confirm: 'Удалить школу "'+school.name+'"?' } do %> 
-								<i class="fa fa-trash-o"></i>
-						 	<% end %>		
-						</div>
-					</li>	
-				<% end %>
-			</ul>
- 	</div>
+		</div>
+		<div class="col-lg-10">
+			<div class="panel panel-default">
+				<div class="panel-heading">Школы</div>
+				<div class="panel-body">	
+					<div class="media">
+						<a class="pull-left" href="#">
+							<%= image_tag('00.jpg', :style=>"width: 100%;") %>	
+							<%= image_tag('eflogo.png', :class=>"row-h-30 company-logo") %>
+						</a>
+				      <div class="media-body">
+				      	<div class="col-lg-7">
+				      		<%= link_to school_path(1) do %>
+				      			<h4 class="media-heading">Школа: Лондон Ковент Гарден</h4>
+				      		<% end %>
+						        <p>
+						        	  Cras sit amet nibh libero, in gravida nulla. 
+							        Nulla vel metus scelerisque ante sollicitudin commodo. 
+									  Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. 
+							        Fusce condimentum nunc ac nisi vulputate fringilla. 
+							        Donec lacinia congue felis in faucibus.
+							     </p>
+							     		<%= link_to "" do %>
+							     			<span class="glyphicon glyphicon-map-marker"> </span>
+							     			Лондон, Великобритания
+							     		<% end %>
+							     <p>
+															     
+							     </p>
+				      	</div>
+				      	<div class="col-lg-5">
+								<table class="table table-hover mar-bot-0">
+									<thead>
+							        <tr class="">
+							          <th class="text-left">Языковые программы</th>
+							        </tr>
+							      </thead>
+							      <tbody>
+							        <tr>
+							        	 <td>
+							          <%= link_to "Общий английский", course_path(1) %> </td>
+							        </tr>
+							        <tr>
+							        	 <td>
+							          <%= link_to "Бизнес английский", course_path(1) %></td>
+							        </tr>
+							        <tr>
+							          <td>
+							          <%= link_to "Программы для детей", course_path(1) %></td>
+							        </tr>
+							      </tbody>
+							    </table> 
+							    <%= link_to school_path(1) do %>
+				          			<h4 class="mar-left-15">
+				          				<span class="label label-success">
+				          					Все программы
+				          					<span class="glyphicon glyphicon-share-alt"></span>
+				          				</span>
+				          			</h4>
+							    <% end %>	
+				      	</div>
+				      </div>
+				    </div>
+				    <div class="media">
+						<a class="pull-left" href="#">
+							<%= image_tag('00.jpg', :style=>"width: 100%;") %>	
+							<%= image_tag('eflogo.png', :class=>"row-h-30 company-logo") %>
+						</a>
+				      <div class="media-body">
+				      	<div class="col-lg-7">
+				      		<%= link_to school_path(1) do %>
+				      			<h4 class="media-heading">Школа: Лондон Ковент Гарден</h4>
+				      		<% end %>
+						        <p>
+						        	  Cras sit amet nibh libero, in gravida nulla. 
+							        Nulla vel metus scelerisque ante sollicitudin commodo. 
+									  Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. 
+							        Fusce condimentum nunc ac nisi vulputate fringilla. 
+							        Donec lacinia congue felis in faucibus.
+							     </p>
+							     		<%= link_to "" do %>
+							     			<span class="glyphicon glyphicon-map-marker"> </span>
+							     			Лондон, Великобритания
+							     		<% end %>
+							     <p>
+															     
+							     </p>
+				      	</div>
+				      	<div class="col-lg-5">
+				      		<table class="table table-hover mar-bot-0">
+									<thead>
+							        <tr class="">
+							          <th class="text-left">Языковые программы</th>
+							        </tr>
+							      </thead>
+							      <tbody>
+							        <tr>
+							        	 <td>
+							          <%= link_to "Общий английский", course_path(1) %> </td>
+							        </tr>
+							        <tr>
+							        	 <td>
+							          <%= link_to "Бизнес английский", course_path(1) %></td>
+							        </tr>
+							        <tr>
+							          <td>
+							          <%= link_to "Программы для детей", course_path(1) %></td>
+							        </tr>
+							      </tbody>
+							    </table> 
+							    <%= link_to school_path(1) do %>
+				          			<h4 class="mar-left-15">
+				          				<span class="label label-success">
+				          					Все программы
+				          					<span class="glyphicon glyphicon-share-alt"></span>
+				          				</span>
+				          			</h4>
+							    <% end %>   	
+				      	</div>
+				      </div>
+				    </div>
+				</div>
+			</div>		
+		</div>
+	</div>	
 </div>
