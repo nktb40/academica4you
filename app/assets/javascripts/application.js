@@ -20,3 +20,4 @@
 //= require bootstrap-datetimepicker
 //= require turbolinks
 //= require backstretch
+//= require gmaps/google

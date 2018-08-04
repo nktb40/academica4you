@@ -1,4 +1,4 @@
-class CreateCourseFeatures < ActiveRecord::Migration
+class CreateCourseFeatures < ActiveRecord::Migration[5.2]
   def change
     create_table :course_features do |t|
       t.integer :course_id

@@ -1,6 +1,10 @@
 class SchoolsController < ApplicationController
 	def index
-		@schools = School.all
+	   if params[:location].present?
+	      @schools = School.near(params[:location], params[:distance] || 10, order: :distance)
+	   else
+	      @schools = School.all
+	   end
 	end
 	
 	def new
@@ -40,9 +44,19 @@ class SchoolsController < ApplicationController
      @school.destroy
      redirect_to schools_path
    end
+   
+   def search
+   	if params[:location].present?
+	      @schools = School.near(params[:location], params[:distance] || 10).order("distance")
+	   else
+	      @schools = School.all
+	   end
+	   @hash = Gmaps4rails.build_markers(@schools) do |school, marker|
+			  marker.lat school.latitude
+			  marker.lng school.longitude
+			end
+   end
 	
-	def search
-	end
 	
 	private 
  	def school_params 

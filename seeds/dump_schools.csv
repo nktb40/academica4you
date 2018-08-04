@@ -1,0 +1,8 @@
+id,name,description,company_id,address_id,created_at,updated_at,world_part,country,city,street,house,latitude_old,longitude_old,latitude,longitude,gmaps
+5,Language Academy Ireland (LAI Bray),,35,,2018-07-08 15:09:58.168475,2018-07-08 17:11:11.328068,,,,,,53.203434,6.107957,53.203434,6.107957,
+9,Did deutsch-institut Frankfurt,,44,,2018-07-08 15:21:19.878288,2018-07-08 17:11:44.170067,,,,,,50.09798,8.68696,50.09798,8.68696,
+4,ATC Language Schools,,35,,2018-07-08 15:06:36.318272,2018-07-08 17:12:14.439242,,Ирландия,"Dunluice House, Strand Rd, Newcourt, Bray, Co. Wicklow, ",,,53.19852,-6.095449,53.19852,-6.095449,
+6,PACE Language Institute,,35,,2018-07-08 15:11:20.187011,2018-07-08 17:12:46.562098,,,,,,53.208861,6.115236,53.208861,6.115236,
+8,German courses Berlin - speakeasy,,44,,2018-07-08 15:19:35.476735,2018-07-08 17:13:07.024478,,,,,,52.505313,13.448432,52.505313,13.448432,
+10,Berlitz Sprachschule Mannheim,,37,,2018-07-08 15:22:57.202247,2018-07-08 17:13:29.255492,,,,,,49.485131,8.474155,49.485131,8.474155,
+7,Irish College of English,,35,,2018-07-08 15:15:45.100146,2018-07-08 17:13:45.733939,,,,,,53.450109,-6.153181,53.450109,-6.153181,

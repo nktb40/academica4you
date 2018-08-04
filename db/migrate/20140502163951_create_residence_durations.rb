@@ -1,4 +1,4 @@
-class CreateResidenceDurations < ActiveRecord::Migration
+class CreateResidenceDurations < ActiveRecord::Migration[5.2]
   def change
     create_table :residence_durations do |t|
       t.string :residence_id

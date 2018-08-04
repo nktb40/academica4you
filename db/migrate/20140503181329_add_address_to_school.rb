@@ -1,4 +1,4 @@
-class AddAddressToSchool < ActiveRecord::Migration
+class AddAddressToSchool < ActiveRecord::Migration[5.2]
   def change
   		add_column :schools, :world_part, :string
   		add_column :schools, :country, :string
