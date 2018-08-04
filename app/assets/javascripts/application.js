@@ -20,4 +20,8 @@
 //= require bootstrap-datetimepicker
 //= require turbolinks
 //= require backstretch
+//= require underscore
+//= require gmaps_google_api
+//= require markerclusterer
+//= require infobox_packed
 //= require gmaps/google

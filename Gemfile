@@ -59,3 +59,5 @@ gem 'capistrano'
 gem 'geocoder'
 
 gem 'gmaps4rails'
+
+gem 'underscore-rails'

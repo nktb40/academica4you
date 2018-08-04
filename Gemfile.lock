@@ -166,6 +166,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.16)
       execjs (>= 0.3.0, < 3)
+    underscore-rails (1.8.3)
     unicorn (5.4.1)
       kgio (~> 2.6)
       raindrops (~> 0.7)
@@ -192,6 +193,7 @@ DEPENDENCIES
   sdoc
   turbolinks
   uglifier
+  underscore-rails
   unicorn
 
 BUNDLED WITH
