@@ -1,63 +1,36 @@
-
-	 <div class="title-box1 v2">
-		<h3>Новая школа</h3>
-	 </div>  
-  	<%= form_for(@school, :html=>{:class=>"contact-form"}) do |f| %>
-  		<div class="success-message">Contact form submitted!</div>
-  			<%= f.label :class=>"company" do %>
-  				<%= f.select :company_id, options_from_collection_for_select(@companies, "id", "name", @school.company_id ) %>
-			<% end %>		
-			<%= f.label :class=>"name" do %>
-				<%= f.text_field :name, :type=>"text", :placeholder=>"Название*", :data=>{:constraints=>"@Required @JustLetters"} %>
+   	<%= form_for(@school) do |f| %>
+  		<div class="form-group">
+  			<%= f.label :full_address_eng %>
+			<%= f.text_field :full_address_eng, :type=>"text", :class=>"form-control", :placeholder=>"Введите адрес школы*", :data=>{:constraints=>"@Required"} %>
 				<span class="empty-message">*This field is required.</span>
-				<span class="error-message">*This is not a valid name.</span>	
-			<% end %>
-			<%= f.label :world_part do %>
-				<%= f.text_field :world_part, :type=>"text", :placeholder=>"Часть света" %>
-			<% end %>
-			<%= f.label :country do %>
-				<%= f.text_field :country, :type=>"text", :placeholder=>"Страна" %>
-			<% end %>
-			<%= f.label :city do %>
-				<%= f.text_field :city, :type=>"text", :placeholder=>"Город" %>
-			<% end %>
-			<%= f.label :street do %>
-				<%= f.text_field :street, :type=>"text", :placeholder=>"Улица" %>
-			<% end %>
-			<%= f.label :house do %>
-				<%= f.text_field :house, :type=>"text", :placeholder=>"Дом" %>
-			<% end %>
-			<%= f.label :latitude do %>
-				<%= f.text_field :latitude, :type=>"text", :placeholder=>"Широта" %>
-			<% end %>
-			<%= f.label :longitude do %>
-				<%= f.text_field :longitude, :type=>"text", :placeholder=>"Долгота" %>
-			<% end %>
-			
-			<%= f.label :class=>"message" do %>
-				<%= f.text_area :description, :placeholder=>"Описание*", :data=>{:constraints=>"@Required @Length(min=20,max=999999)"} %>
+				<span class="error-message">*This is not a valid name.</span>
+		</div>
+  		<div class="form-group">
+  			<%= f.label :name %>
+			<%= f.text_field :name, :type=>"text", :class=>"form-control", :placeholder=>"Название*", :data=>{:constraints=>"@Required @JustLetters"} %>
+				<span class="empty-message">*This field is required.</span>
+				<span class="error-message">*This is not a valid name.</span>
+		</div>
+  		<div class="form-group">
+  			<%= f.label :company_id %>
+  			<%= f.select :company_id, options_from_collection_for_select(@companies, "id", "name", @school.company_id), {}, {:class=>"form-control bootstrap-select"} %>	
+  		</div>
+		<div class="form-group">	
+			<%= f.label :description %>
+			<%= f.text_area :description, :placeholder=>"Описание*", :class=>"form-control", :data=>{:constraints=>"@Required @Length(min=20,max=999999)"} %>
 				<span class="empty-message">*This field is required.</span>
 				<span class="error-message">*The message is too short.</span>
-			<% end %>
-			
-			<div class="form_btns title-box1 v2">
-				<h3>Курсы</h3>
-	 		</div>  
-			<%= f.label :lnk_school_courses do %>
-				<%= f.fields_for :lnk_school_courses do |d| %>
-	      		<%= render 'lnk_school_course_fields', :f => d %>
-	      	<% end %>
-	      <% end %>
-	      
-      	<div class="form_btns">
-   			<%= link_to_add_association f, :lnk_school_courses do %>
-   				 Добавить курс
-   				 <i class="fa fa-plus"></i>
-   			<% end %>
-      	</div>			
-			
-		   <div class="form_btns">
-	     		<!--%= link_to 'Сохранить', '#', :data=>{:type=>'submit'}, :class=>"more_btn" %-->
-	     		<%= f.submit :'Сохранить', :class=>"more_btn" %>
-			</div>
+		</div>
+		<div class="form-group">	
+			<%= f.label :latitude %>
+			<%= f.text_field :latitude, :type=>"text", :class=>"form-control", :placeholder=>"Широта" %>
+		</div>
+		<div class="form-group">
+			<%= f.label :longitude %>
+			<%= f.text_field :longitude, :type=>"text", :class=>"form-control", :placeholder=>"Долгота" %>
+		</div>			
+		<div class="form_btns">
+	    	<!--%= link_to 'Сохранить', '#', :data=>{:type=>'submit'}, :class=>"more_btn" %-->
+	     	<%= f.submit :'Сохранить', :class=>"btn btn-info" %>
+		</div>
 	<% end %>

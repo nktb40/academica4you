@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Academica4you</title>
+  <title>ActivityBooking</title>
   <%= favicon_link_tag(source='favicon.png', :rel=>"shortcut icon", :type=>"image/x-icon") %>
   <%= favicon_link_tag(source='favicon.png', :rel=>"icon", :type=>"image/x-icon") %>
   <meta name="description" content=""/>
@@ -10,6 +10,8 @@
   <meta name="document-state" content="Dynamic" />
   <meta name="robots" content="all" />
   <meta http-equiv="content-language" content="ru" />
+  <script src="//maps.google.com/maps/api/js?key=AIzaSyAYVxHwPxj8iSGj3rqD2sWEEUcCF2mSxI4"></script>
+  <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -20,23 +22,22 @@
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">           
-            <span class="sr-only">Academica4you</span>
+            <span class="sr-only">ActivityBooking</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
           <%= link_to root_path, :class=>"navbar-brand" do %>
           	<span class="glyphicon glyphicon-globe"> </span>
-          	Academica4you
+          	ActivityBooking.net
           <% end %>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
           <ul class="nav navbar-nav">
             <li class="active"><%= link_to "Главная", root_path %></li>
-            <li><%= link_to "Поиск курсов", search_path %></li>
+            <li><%= link_to "Поиск курсов", schools_path %></li>
             <li><%= link_to "Все школы", schools_path %></li>
-            <li><a href="#">Визовая поддержка</a></li>
-            <li><a href="#">Как мы работаем</a></li>
+            <li><%= link_to "Добавить школу", new_school_path %></li>
             <li><a href="#">Контакты</a></li>
           </ul>
 			 <form class="navbar-form navbar-right" role="search">
@@ -57,9 +58,6 @@
 
         <%= yield %>
    </div>
-  <div id="footer-container" class="panel-footer">
-  		<p>© Company 2014</p>
-  </div>
   </div>
 </body>
  <script type="text/javascript" >

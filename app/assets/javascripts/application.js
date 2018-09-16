@@ -12,7 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
+//= require jquery-ui/widgets/autocomplete
+//= require bootstrap.min
 //= require cocoon
 //= require bootstrap-select
 //= require moment
@@ -21,7 +22,8 @@
 //= require turbolinks
 //= require backstretch
 //= require underscore
-//= require gmaps_google_api
-//= require markerclusterer
-//= require infobox_packed
 //= require gmaps/google
+//= require bloodhound
+//= require typeahead.jquery
+// require typeahead.bundle
+//= require schools

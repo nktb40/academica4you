@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_08_193717) do
+ActiveRecord::Schema.define(version: 2018_08_23_180023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,29 @@ ActiveRecord::Schema.define(version: 2018_07_08_193717) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "geoplace_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "geoplaces", force: :cascade do |t|
+    t.string "geoplace_type_id"
+    t.string "long_name"
+    t.string "short_name"
+    t.text "formatted_address"
+    t.integer "parent_geoplace_id"
+    t.string "parent_geoplace_type_id"
+    t.float "latitude"
+    t.float "longitude"
+    t.float "northeast_lat"
+    t.float "northeast_lng"
+    t.float "southwest_lat"
+    t.float "southwest_lng"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "lang_levels", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -104,6 +127,13 @@ ActiveRecord::Schema.define(version: 2018_07_08_193717) do
   create_table "lnk_school_courses", force: :cascade do |t|
     t.integer "school_id"
     t.integer "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lnk_school_geoplaces", force: :cascade do |t|
+    t.integer "school_id"
+    t.integer "geoplace_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -150,11 +180,11 @@ ActiveRecord::Schema.define(version: 2018_07_08_193717) do
     t.string "city"
     t.string "street"
     t.string "house"
-    t.string "latitude_old"
-    t.string "longitude_old"
     t.float "latitude"
     t.float "longitude"
     t.boolean "gmaps"
+    t.text "full_address_eng"
+    t.text "full_address_rus"
   end
 
 end

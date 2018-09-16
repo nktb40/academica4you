@@ -1,144 +1,169 @@
-<div class="container pad-top-bot-50">
-	<div class="row">
-		<div class="col-lg-3">
-			<div class="panel panel-default">
-				<div class="panel-heading">Параметры</div>
-				<div class="panel-body">
-					<div class="form-group">
-						<%= select_tag :country_id, 
-		       			options_for_select([ "Америка", "Великобритания","Ирландия", "Юар" ], "Выберите страну"), 
-		       				:class=>"selectpicker", :prompt=>"Выберите страну", :data=>{:style=>"btn-info"} %>
-					</div>					
-					<div class="form-group">				
-						<%= select_tag :country_id, 
-		       			options_for_select([ "Inlingua Malta", "Kaplan","English First", "EC" ], "Выберите страну"), 
-		       				:class=>"selectpicker", :prompt=>"Выберите компанию", :data=>{:style=>"btn-info"} %>				
-					</div>				
-				</div>
-			</div>		
-		</div>
-		<div class="col-lg-9">
-			<div class="panel panel-default">
-				<div class="panel-heading">Школы</div>
-				<div class="panel-body">	
-					<div class="media">
-						<a class="pull-left" href="#">
-							<%= image_tag('00.jpg', :style=>"width: 100%;") %>	
-							<%= image_tag('eflogo.png', :class=>"row-h-30 company-logo") %>
-						</a>
-				      <div class="media-body">
-				      	<div class="col-lg-7">
-				      		<%= link_to school_path(1) do %>
-				      			<h4 class="media-heading">Школа: Лондон Ковент Гарден</h4>
-				      		<% end %>
-						        <p>
-						        	  Cras sit amet nibh libero, in gravida nulla. 
-							        Nulla vel metus scelerisque ante sollicitudin commodo. 
-									  Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. 
-							        Fusce condimentum nunc ac nisi vulputate fringilla. 
-							        Donec lacinia congue felis in faucibus.
-							     </p>
-							     		<%= link_to "" do %>
-							     			<span class="glyphicon glyphicon-map-marker"> </span>
-							     			Лондон, Великобритания
-							     		<% end %>
-							     <p>
-															     
-							     </p>
-				      	</div>
-				      	<div class="col-lg-5">
-								<table class="table table-hover mar-bot-0">
-									<thead>
-							        <tr class="">
-							          <th class="text-left">Языковые программы</th>
-							        </tr>
-							      </thead>
-							      <tbody>
-							        <tr>
-							        	 <td>
-							          <%= link_to "Общий английский", course_path(1) %> </td>
-							        </tr>
-							        <tr>
-							        	 <td>
-							          <%= link_to "Бизнес английский", course_path(1) %></td>
-							        </tr>
-							        <tr>
-							          <td>
-							          <%= link_to "Программы для детей", course_path(1) %></td>
-							        </tr>
-							      </tbody>
-							    </table> 
-							    <%= link_to school_path(1) do %>
-				          			<h4 class="mar-left-15">
-				          				<span class="label label-success">
-				          					Все программы
-				          					<span class="glyphicon glyphicon-share-alt"></span>
-				          				</span>
-				          			</h4>
-							    <% end %>	
-				      	</div>
-				      </div>
-				    </div>
-				    <div class="media">
-						<a class="pull-left" href="#">
-							<%= image_tag('00.jpg', :style=>"width: 100%;") %>	
-							<%= image_tag('eflogo.png', :class=>"row-h-30 company-logo") %>
-						</a>
-				      <div class="media-body">
-				      	<div class="col-lg-7">
-				      		<%= link_to school_path(1) do %>
-				      			<h4 class="media-heading">Школа: Лондон Ковент Гарден</h4>
-				      		<% end %>
-						        <p>
-						        	  Cras sit amet nibh libero, in gravida nulla. 
-							        Nulla vel metus scelerisque ante sollicitudin commodo. 
-									  Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. 
-							        Fusce condimentum nunc ac nisi vulputate fringilla. 
-							        Donec lacinia congue felis in faucibus.
-							     </p>
-							     		<%= link_to "" do %>
-							     			<span class="glyphicon glyphicon-map-marker"> </span>
-							     			Лондон, Великобритания
-							     		<% end %>
-							     <p>
-															     
-							     </p>
-				      	</div>
-				      	<div class="col-lg-5">
-				      		<table class="table table-hover mar-bot-0">
-									<thead>
-							        <tr class="">
-							          <th class="text-left">Языковые программы</th>
-							        </tr>
-							      </thead>
-							      <tbody>
-							        <tr>
-							        	 <td>
-							          <%= link_to "Общий английский", course_path(1) %> </td>
-							        </tr>
-							        <tr>
-							        	 <td>
-							          <%= link_to "Бизнес английский", course_path(1) %></td>
-							        </tr>
-							        <tr>
-							          <td>
-							          <%= link_to "Программы для детей", course_path(1) %></td>
-							        </tr>
-							      </tbody>
-							    </table> 
-							    <%= link_to school_path(1) do %>
-				          			<h4 class="mar-left-15">
-				          				<span class="label label-success">
-				          					Все программы
-				          					<span class="glyphicon glyphicon-share-alt"></span>
-				          				</span>
-				          			</h4>
-							    <% end %>   	
-				      	</div>
-				      </div>
-				    </div>
-				</div>
-			</div>		
-		</div>
-	</div>	
-</div>
+
+ 
+<div class="container  pad-top-bot-50">
+ <div class="row"> 
+ 	<div class="col-lg-8">
+		<div class="panel panel-default">
+	       <div class="panel-heading"><h3 class="panel-title">Поиск на карте</h3></div>
+	       <div class="panel-body pad-0" id="map_canvas" style="height:412px;">
+	       </div>
+	     </div>
+ 	</div>
+	<div class="col-lg-4">
+		<div class="panel panel-default">
+	       <div class="panel-heading">Выбор программы</div>
+	       <div class="panel-body">
+		        <%= form_tag schools_path, method: :get do %>
+		        		<div class="col-lg-8">
+						  <%= text_field_tag :location, params[:location], :data=>{:style=>"btn-info"} %>
+						  <%= hidden_field_tag :distance, params[:distance], :value => 100 %>						
+						</div>
+						<div class="col-lg-4">						
+						  <%= submit_tag "Поиск", :class=>"btn btn-success" %>
+						</div>
+				  <% end %>
+	       </div>
+	       <!--div class="panel-body">
+	       	<div class="col-lg-8">
+	       		<%= select_tag :language_id, 
+	       		options_for_select([ "Курсы английского", "Подготовка к экзаменам","Учебный семестр/год", "Учеба/работа" ], "Курсы английского"), 
+	       		:class=>"selectpicker", :data=>{:style=>"btn-info"} %>
+	       	</div>
+	       	<div class="col-lg-4">
+	       		<%= link_to "", :class=>"btn btn-success" do %>
+	       			Поиск
+	       		<% end %>
+	       	</div>
+	       </div-->
+	     </div>
+		<div class="panel panel-default">
+	       <div class="panel-heading">Выбор стран</div>
+	       <div class="panel-body">
+	       	<div class="col-lg-6">
+		         <div class="checkbox">
+		         	<label><input type="checkbox"> Австралия</label>
+		         </div>
+		         <div class="checkbox">
+		            <label><input type="checkbox"> Америка</label>
+		         </div>
+		         <div class="checkbox">
+		            <label><input type="checkbox"> Великобритания</label>
+		         </div>
+		         <div class="checkbox">
+		            <label><input type="checkbox"> Германия</label>
+		        	</div>
+		      </div>
+		      <div class="col-lg-6">
+		        	<div class="checkbox">
+		            <label><input type="checkbox"> Мальта</label>
+		         </div>
+		         <div class="checkbox">
+		            <label><input type="checkbox"> Новая зеландия</label>
+		         </div>
+		         <div class="checkbox">
+		            <label><input type="checkbox"> Франция</label>
+		         </div>
+					<div class="checkbox">
+		            <label><input type="checkbox"> ЮАР</label>
+		         </div>
+		      </div>
+	       </div>
+	     </div>
+	     
+	     <div class="panel panel-default">
+	       <div class="panel-heading">Предполагаемое время поездки</div>
+	       <div class="panel-body">
+	       <div class="col-lg-6">
+	       	<div class="input-group" id='datetimepicker1'>	      
+			      <input type="text" class="form-control date pad-0">
+			      <span class="input-group-btn">
+                	<button class="btn btn-info" type="button">
+							<span class="glyphicon glyphicon-calendar"></span>                	
+                	</button>
+              	</span>
+			   </div>
+			  </div>
+			  <div class="col-lg-6">
+			   <div class="input-group" id='datetimepicker2'>	      
+			      <input type="text" class="form-control date pad-0">
+			      <span class="input-group-btn">
+                	<button class="btn btn-info" type="button">
+							<span class="glyphicon glyphicon-calendar"></span>                	
+                	</button>
+              	</span>
+			   </div>
+			  </div>
+	       </div>
+	     </div>
+	     
+ 	</div> 
+ </div>
+ <div class="row">
+ 	<div class="col-lg-12">
+	 	<div class="panel panel-default">
+	       <div class="panel-heading">
+	         <h3 class="panel-title">Результаты поиска</h3>
+	       </div>
+	   </div>
+      <% @schools.each do |school| %>
+ 	   <div class="panel panel-default">
+ 	  		<div class="panel-body course-item">
+    			<div class="col-lg-2 pad-left-0">
+    				<div style="width:100%; margin-bottom: 15px;">
+    					<div class="comp-logo">
+    						<%= image_tag('eflogo.png', :class=>"row-h-30") %>
+    						<%= school.company.name %>
+						</div>    				
+    				</div>
+    				<%= image_tag('00.jpg', :style=>"width: 100%;") %>
+    			</div>
+    			<div class="col-lg-8">
+    				<div class="well course-item-well ">
+    					<h4>Школа: <%= school.name %></h4>
+    					<p>Язык: Английский</p>
+    					<p>Продолжительность: от 2 до 12 недель</p>
+    					<p>Минимальный уровень языка: Intermediate</p>
+    				</div>
+    				<div class="well course-item-well mar-bot-0">
+    					<p>Страны: Америка, Мальта</p>
+    				</div>
+    			</div>
+				<div class="col-lg-2 pad-right-0">
+					<div class="well course-item-well">
+						<h4>от $230</h4>
+					</div>
+					<%= link_to "Подробнее", course_path(1), :class=>"btn btn-success btn-block" %>
+					<button type="submit" class="btn btn-info btn-block">Заказать</button>
+    			</div>
+  			</div>
+ 	  </div> 
+ 	  <% end %> 
+ 	  
+ 	</div>
+ </div>
+ </div>
+
+ 
+<script type="text/javascript">
+      $( document ).ready(function() {
+           $('#datetimepicker1').datetimepicker({
+                    language: 'ru',
+                    pickTime: false,
+                    useCurrent: true
+           });
+           $('#datetimepicker2').datetimepicker({
+                    language: 'ru',
+                    pickTime: false,
+                    useCurrent: true
+           });
+		
+           handler =  Gmaps.build('Google');
+	   handler.buildMap({ provider: {}, internal: {id: 'map_canvas'}}, function(){
+	     markers = handler.addMarkers(<%=raw @hash.to_json %>);
+	     handler.bounds.extendWith(markers);
+	     handler.fitMapToBounds();
+	   });
+      });
+  </script>
+  
+  

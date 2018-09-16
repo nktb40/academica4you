@@ -61,3 +61,9 @@ gem 'geocoder'
 gem 'gmaps4rails'
 
 gem 'underscore-rails'
+
+gem 'searchkick'
+
+gem 'jquery-ui-rails'
+
+gem 'detect_language'

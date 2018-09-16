@@ -5,8 +5,13 @@ Academica4you::Application.routes.draw do
   # You can have the root of your site routed with "root"
    root 'companies#index'
    
-   resources :schools , only: [:index, :new, :show, :create, :edit, :update, :destroy]
-   get 'search' => 'schools#search'
+   #resources :schools , only: [:index, :new, :autocomplete, :show, :create, :edit, :update, :destroy]
+   #get 'search' => 'schools#search'
+   resources :schools do
+    collection do
+      get :autocomplete
+     end
+   end
    
    resources :companies, only: [:index, :new, :create, :edit, :update, :destroy]
    
