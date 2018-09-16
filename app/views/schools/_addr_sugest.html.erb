@@ -1,0 +1,12 @@
+<% if !@sugest_results.empty? %>
+	<ul class="dropdown-menu" id="dropdown-addr-sugest" aria-labelledby="typeahead">
+		<% @sugest_results.each do |result| %>
+		     <% puts result %>
+		     <li><a href="#">
+		     	<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+		     	<%= result %>
+		     	</a>
+		     </li>
+		<% end %>
+	</ul>
+<% end %>

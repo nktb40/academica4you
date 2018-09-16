@@ -1,0 +1,141 @@
+<div class="container">
+	<div class="row">
+		<div>
+			<h3>Новая школа</h3>
+	 	</div> 
+		<div class="col-sm-4">
+			<div class="form-group">
+				  <div class="dropdown" id="addr-sugest">
+					  <input id="typeahead" class="form-control dropdown-toggle" type="text" placeholder="Type address" data-toggle="dropdown">
+				</div>
+			</div>
+			<%= render partial: "form"%>
+		</div>
+		<div class="col-sm-8">
+			<div class="panel-body pad-0" id="map_canvas" style="height:412px;"></div>
+		</div>
+ 	</div>
+	<div class="row">
+		<div>
+			<h3>Школы</h3>
+		</div>
+		<table class="table table-hover">
+		  <thead>
+		    <tr>
+		      <th scope="col">#</th>
+		      <th scope="col">Название школы</th>
+		      <th scope="col">Компания</th>
+		      <th scope="col">Адрес</th>
+		      <th scope="col"></th>
+		      <th scope="col"></th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  	<% @schools.each do |school| %>
+			    <tr>
+			      <th scope="row"><%= school.id %></th>
+			      <td><%= school.name %></td>
+			      <td><%= school.company.name %></td>
+			      <td><%= school.full_address_rus %></td>
+			      <td><%= link_to edit_school_path(school), :remote=>true do %> 
+						  edit
+				 	  <% end %>
+				  </td>
+				  <td><%= link_to school_path(school), 
+				  			:method => 'delete', 
+				  			 data: { confirm: 'Удалить школу "'+school.name+'"?' } do 
+				  	   %> 
+						  delete
+				 	  <% end %>
+				  </td>
+			    </tr>
+		    <% end %>
+		  </tbody>
+		</table>
+	</div>
+</div>
+
+<script type="text/javascript">
+      $( document ).ready(function() {
+		
+        handler =  Gmaps.build('Google');
+	    handler.buildMap({ provider: {}, internal: {id: 'map_canvas'}}, function(){
+	    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+	    handler.bounds.extendWith(markers);
+	    handler.fitMapToBounds();
+	   });
+      });
+  </script>
+
+<script type="text/javascript">
+	window.addEventListener("keydown", function(e) {
+	    // space and arrow keys
+	    if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+	        e.preventDefault();
+	    }
+	}, false);
+</script>
+
+<script type="text/javascript">
+
+	var states = new Bloodhound({
+	  datumTokenizer: Bloodhound.tokenizers.whitespace,
+	  queryTokenizer: Bloodhound.tokenizers.whitespace,
+	  local: []
+	});
+
+	var prevInputVal = "";
+	var typingTimer;              
+	var doneTypingInterval = 1000;
+
+	$('#dropdown-toggle').dropdown('toggle');
+
+
+	$("#typeahead").on("change paste keyup", function(event) {
+	   	
+	   	clearTimeout(typingTimer);
+
+		var keycode = (event.keyCode ? event.keyCode : event.which);
+		
+		if(keycode == '40' && $(this).next().find('a').length > 0){
+			$(this).next().find('li:first a').focus();
+			$('#typeahead').val($.trim($(this).next().find('li:first a').text()));
+		}
+	   	else if($("#typeahead").val().length >= 2 && prevInputVal != $("#typeahead").val().length) {
+	   		typingTimer = setTimeout(function(){
+	   			prevInputVal = $("#typeahead").val().length;
+		   		params = {term: $("#typeahead").val()};
+				$.get('/schools/autocomplete', params, function() {$('.dropdown-toggle').dropdown('toggle');});
+		 	},doneTypingInterval);
+		}
+	});
+
+	$('#bloodhound .typeahead').typeahead({
+	  hint: true,
+	  highlight: true,
+	  minLength: 1
+	},
+	{
+	  name: 'states',
+	  source: states
+	});
+
+  	/*$("#dropdown-addr-sugest li a").click(function(event){*/
+  	$(document.body).on('click', '#dropdown-addr-sugest li a' ,function(event){
+	    event.preventDefault();
+	    $('#typeahead').val($.trim($(this).text()));
+	});
+
+
+	$(document.body).on('keyup', '#dropdown-addr-sugest li' ,function(event){
+		var keycode = (event.keyCode ? event.keyCode : event.which);
+	    if(keycode == '40' && $(this).next().find('a').length > 0){
+			$(this).next().find('a').focus();
+			$('#typeahead').val($.trim($(this).next().text()));
+		}
+		if(keycode == '38' && $(this).prev().find('a').length > 0){
+			$(this).prev().find('a').focus();
+			$('#typeahead').val($.trim($(this).prev().text()));
+		}
+	});
+</script>
