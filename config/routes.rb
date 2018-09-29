@@ -10,6 +10,7 @@ Academica4you::Application.routes.draw do
    resources :schools do
     collection do
       get :autocomplete
+      get :get_addr_by_pos
      end
    end
    

@@ -4,11 +4,7 @@
 			<h3>Новая школа</h3>
 	 	</div> 
 		<div class="col-sm-4">
-			<div class="form-group">
-				  <div class="dropdown" id="addr-sugest">
-					  <input id="typeahead" class="form-control dropdown-toggle" type="text" placeholder="Type address" data-toggle="dropdown">
-				</div>
-			</div>
+			
 			<%= render partial: "form"%>
 		</div>
 		<div class="col-sm-8">
@@ -56,21 +52,67 @@
 </div>
 
 <script type="text/javascript">
-      $( document ).ready(function() {
-		
+    $( document ).ready(function() {
+
         handler =  Gmaps.build('Google');
-	    handler.buildMap({ provider: {}, internal: {id: 'map_canvas'}}, function(){
-	    markers = handler.addMarkers(<%=raw @hash.to_json %>);
-	    handler.bounds.extendWith(markers);
-	    handler.fitMapToBounds();
-	   });
-      });
+	    handler.buildMap({ provider: {}, internal: 
+	    	{
+	    		id: 'map_canvas', 
+	    	}}, function(){});
+
+	    if (navigator.geolocation) {
+		    navigator.geolocation.getCurrentPosition(function(position){
+
+		    	var pos = {
+	              lat: position.coords.latitude,
+	              lng: position.coords.longitude
+	            };
+	            map = handler.getMap();
+	            map.setCenter(pos);
+	            map.setZoom(10);
+	            map.setOptions({draggableCursor: 'default'});
+		    });
+		} else {
+		    console.log("Geolocation is not supported by this browser.");
+		}
+		markers = [];
+		google.maps.event.addListener(handler.getMap(), 'click', function(event) {
+		    if(markers.length > 0) {
+		    	handler.removeMarkers(markers);
+		    }
+		    markers = handler.addMarkers([
+		      {
+		        "lat": event.latLng.lat(),
+		        "lng": event.latLng.lng()
+		      }
+		    ],
+		      {
+		    	draggable: true,
+		    	animation: google.maps.Animation.DROP,
+		    	cursor: 'grab',
+		    	draggingCursor: 'grabbing'
+		      }
+		    );
+		    //alert(markers[0].position.lat());
+		    google.maps.event.addListener(markers[0], 'dragend', function(event) {
+		    	alert(1);
+		    	//$("#school_latitude").val(event.position.lat());
+		    	//$("#school_longitude").val(event.position.lng());
+		    });
+		    params = {map_pos: event.latLng.lat()+","+event.latLng.lng()};
+		    $("#school_latitude").val(event.latLng.lat());
+		    $("#school_longitude").val(event.latLng.lng());
+			$.get('/schools/get_addr_by_pos', params);
+		});
+    });
+
+
   </script>
 
 <script type="text/javascript">
 	window.addEventListener("keydown", function(e) {
 	    // space and arrow keys
-	    if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+	    if([32, 38, 40].indexOf(e.keyCode) > -1) {
 	        e.preventDefault();
 	    }
 	}, false);
@@ -78,17 +120,9 @@
 
 <script type="text/javascript">
 
-	var states = new Bloodhound({
-	  datumTokenizer: Bloodhound.tokenizers.whitespace,
-	  queryTokenizer: Bloodhound.tokenizers.whitespace,
-	  local: []
-	});
-
 	var prevInputVal = "";
 	var typingTimer;              
 	var doneTypingInterval = 1000;
-
-	$('#dropdown-toggle').dropdown('toggle');
 
 
 	$("#typeahead").on("change paste keyup", function(event) {
@@ -101,26 +135,15 @@
 			$(this).next().find('li:first a').focus();
 			$('#typeahead').val($.trim($(this).next().find('li:first a').text()));
 		}
-	   	else if($("#typeahead").val().length >= 2 && prevInputVal != $("#typeahead").val().length) {
+	   	else if($("#typeahead").val().length >= 2 && prevInputVal != $("#typeahead").val() && [37, 39].indexOf(event.keyCode) == -1) {
 	   		typingTimer = setTimeout(function(){
-	   			prevInputVal = $("#typeahead").val().length;
+	   			prevInputVal = $("#typeahead").val();
 		   		params = {term: $("#typeahead").val()};
-				$.get('/schools/autocomplete', params, function() {$('.dropdown-toggle').dropdown('toggle');});
+				$.get('/schools/autocomplete', params);
 		 	},doneTypingInterval);
 		}
 	});
 
-	$('#bloodhound .typeahead').typeahead({
-	  hint: true,
-	  highlight: true,
-	  minLength: 1
-	},
-	{
-	  name: 'states',
-	  source: states
-	});
-
-  	/*$("#dropdown-addr-sugest li a").click(function(event){*/
   	$(document.body).on('click', '#dropdown-addr-sugest li a' ,function(event){
 	    event.preventDefault();
 	    $('#typeahead').val($.trim($(this).text()));

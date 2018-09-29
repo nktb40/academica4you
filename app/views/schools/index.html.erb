@@ -158,12 +158,32 @@
            });
 		
            handler =  Gmaps.build('Google');
-	   handler.buildMap({ provider: {}, internal: {id: 'map_canvas'}}, function(){
+	   	 handler.buildMap({ provider: {}, internal: {id: 'map_canvas'}}, function(){
 	     markers = handler.addMarkers(<%=raw @hash.to_json %>);
 	     handler.bounds.extendWith(markers);
 	     handler.fitMapToBounds();
 	   });
       });
   </script>
+
+  <script type="text/javascript">
+
+	var states = new Bloodhound({
+	  datumTokenizer: Bloodhound.tokenizers.whitespace,
+	  queryTokenizer: Bloodhound.tokenizers.whitespace,
+	  local: []
+	});
+
+	$('#bloodhound .typeahead').typeahead({
+	  hint: true,
+	  highlight: true,
+	  minLength: 1
+	},
+	{
+	  name: 'states',
+	  source: states
+	});
+
+</script>
   
   

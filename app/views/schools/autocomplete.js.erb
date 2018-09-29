@@ -1,2 +1,21 @@
 $('#dropdown-addr-sugest').remove();
+
+southWest = new google.maps.LatLng(<%=raw @southWest[0] %>,<%=raw @southWest[1] %>);
+northEast = new google.maps.LatLng(<%=raw @northEast[0] %>,<%=raw @northEast[1] %>);
+
+mapBounds = new google.maps.LatLngBounds( southWest, northEast );
+
+handler.removeMarkers(markers);
+
+markers = handler.addMarkers(<%=raw @hash.to_json %>,
+			  {
+		    	draggable: true,
+		    	animation: google.maps.Animation.DROP,
+		    	cursor: 'grab',
+		    	draggingCursor: 'grabbing'
+		      });
+
+map = handler.getMap();
+map.fitBounds(mapBounds);
+
 $('#addr-sugest').append("<%= j render :partial => 'addr_sugest' %>");
